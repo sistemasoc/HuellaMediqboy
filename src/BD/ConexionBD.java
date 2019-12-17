@@ -4,17 +4,18 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author ING JARC
  */
 public class ConexionBD {
 
-public  String puerto="3306";
-public  String nomservidor="localhost";
-public  String db="huellasd";
+public  String puerto="33206";
+public  String nomservidor="192.168.1.11";
+public  String db="oclaeconomia";
 public  String user="root";
-public  String pass="";
+public  String pass="3edcft6";
 Connection conn=null;
 
 public Connection conectar(){

@@ -26,6 +26,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import BD.ConexionBD;
 import com.digitalpersona.onetouch.verification.DPFPVerificationResult;
+import java.awt.Color;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -36,43 +37,52 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
+
+
 /**
  *
- * @author ING JARC
+ * @author 
  */
-public class CapturaHuella extends javax.swing.JDialog {
 
+public class CapturaHuella extends javax.swing.JFrame {
+
+    
+   
     /** Creates new form CapturaHuella */
     public CapturaHuella() {
         try {
          UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
          } catch (Exception e) {
-         JOptionPane.showMessageDialog(null, "Imposible modificar el tema visual", "Lookandfeel inválido.",
+         JOptionPane.showMessageDialog(null, "Imposible modificar el tema visual", "inválido.",
          JOptionPane.ERROR_MESSAGE);
          }
         initComponents();
+//        this.setUndecorated(true);
         txtArea.setEditable(false);
     }
+    
+     
 
     @SuppressWarnings("unchecked")
+    /*
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panHuellas = new javax.swing.JPanel();
+        javax.swing.JPanel panHuellas = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         lblImagenHuella = new javax.swing.JLabel();
         panBtns = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        btnSalir = new javax.swing.JButton();
         btnVerificar = new javax.swing.JButton();
         btnIdentificar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
+        btnRespaldo = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Huellas Dactilares - J@RC 2011 4500 Fingerprint Reader DP");
+        setTitle("Huellas Dactilares MB");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -83,36 +93,33 @@ public class CapturaHuella extends javax.swing.JDialog {
             }
         });
 
-        panHuellas.setBackground(new java.awt.Color(0, 0, 0));
-        panHuellas.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Huella Digital Capturada", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        panHuellas.setBackground(new java.awt.Color(204, 204, 204));
+        panHuellas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        panHuellas.setForeground(new java.awt.Color(255, 255, 0));
         panHuellas.setPreferredSize(new java.awt.Dimension(400, 270));
         panHuellas.setLayout(new java.awt.BorderLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new java.awt.BorderLayout());
-
-        lblImagenHuella.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(lblImagenHuella, java.awt.BorderLayout.CENTER);
-
         panHuellas.add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(panHuellas, java.awt.BorderLayout.CENTER);
+        lblImagenHuella.setBackground(new java.awt.Color(204, 204, 204));
+        lblImagenHuella.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panHuellas.add(lblImagenHuella, java.awt.BorderLayout.PAGE_START);
 
-        panBtns.setBackground(new java.awt.Color(153, 153, 153));
+        getContentPane().add(panHuellas, java.awt.BorderLayout.CENTER);
+        panHuellas.getAccessibleContext().setAccessibleName("HUELLA DIGITAL CAPTURADA");
+        panHuellas.getAccessibleContext().setAccessibleDescription("");
+
+        panBtns.setBackground(new java.awt.Color(204, 204, 204));
         panBtns.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Acciones", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
         panBtns.setPreferredSize(new java.awt.Dimension(400, 190));
         panBtns.setLayout(new java.awt.BorderLayout());
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
         jPanel2.setPreferredSize(new java.awt.Dimension(366, 90));
-
-        btnSalir.setText("Salir");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
 
         btnVerificar.setText("Verificar");
         btnVerificar.addActionListener(new java.awt.event.ActionListener() {
@@ -136,6 +143,13 @@ public class CapturaHuella extends javax.swing.JDialog {
             }
         });
 
+        btnRespaldo.setText("Respaldo");
+        btnRespaldo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRespaldoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -145,23 +159,167 @@ public class CapturaHuella extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnIdentificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 228, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                    .addComponent(btnRespaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(37, 37, 37))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnIdentificar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRespaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panBtns.add(jPanel2, java.awt.BorderLayout.NORTH);
+
+        jPanel4.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel4.setLayout(new java.awt.BorderLayout());
+
+        txtArea.setColumns(20);
+        txtArea.setRows(5);
+        txtArea.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        jScrollPane1.setViewportView(txtArea);
+
+        jPanel4.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        panBtns.add(jPanel4, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(panBtns, java.awt.BorderLayout.SOUTH);
+
+        setSize(new java.awt.Dimension(607, 575));
+        setLocationRelativeTo(null);
+    }// </editor-fold>//GEN-END:initComponents
+     
+    */
+    
+     private void initComponents() {
+
+        javax.swing.JPanel panHuellas = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        lblImagenHuella = new javax.swing.JLabel();
+        panBtns = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+      //  btnSalir = new javax.swing.JButton();
+        btnVerificar = new javax.swing.JButton();
+        btnIdentificar = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
+        btnRespaldo = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtArea = new javax.swing.JTextArea();
+
+         
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("HUELLA DIGITAL MEDIQBOY");
+        
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+
+        panHuellas.setForeground(new java.awt.Color(255,255,255));
+        panHuellas.setBackground(new java.awt.Color(221,106,100));
+        panHuellas.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "HUELLA DIGITAL CAPTURADA", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        panHuellas.setPreferredSize(new java.awt.Dimension(10, 850));
+        panHuellas.setLayout(new java.awt.BorderLayout());
+
+        jPanel1.setBackground(new java.awt.Color(36, 41, 41));
+        jPanel1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        
+        lblImagenHuella.setBackground(new java.awt.Color(23,22,22));
+        lblImagenHuella.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.add(lblImagenHuella, java.awt.BorderLayout.CENTER);
+
+        panHuellas.add(jPanel1, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(panHuellas, java.awt.BorderLayout.CENTER);
+
+        panBtns.setBackground(new java.awt.Color(221,106,100));
+        panBtns.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "OPCIONES", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        panBtns.setPreferredSize(new java.awt.Dimension(400, 190));
+        panBtns.setLayout(new java.awt.BorderLayout());
+
+        jPanel2.setBackground(new java.awt.Color(255,255,255));
+        jPanel2.setPreferredSize(new java.awt.Dimension(366, 90));
+/*
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+               btnSalirActionPerformed(evt);
+            }
+        });*/
+
+        btnVerificar.setText("Verificar");
+        btnVerificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerificarActionPerformed(evt);
+            }
+        });
+
+        btnIdentificar.setText("Identificar");
+        btnIdentificar.setPreferredSize(new java.awt.Dimension(71, 23));
+        btnIdentificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIdentificarActionPerformed(evt);
+            }
+        });
+
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+         btnRespaldo.setText("Respaldo");
+        btnRespaldo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRespaldoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnIdentificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                  //.addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRespaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(11, 11, 11)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnIdentificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnIdentificar, javax.swing.GroupLayout.DEFAULT_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                         .addComponent(btnRespaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    //.addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -170,7 +328,6 @@ public class CapturaHuella extends javax.swing.JDialog {
         jPanel4.setLayout(new java.awt.BorderLayout());
 
         txtArea.setColumns(20);
-        txtArea.setFont(new java.awt.Font("Lucida Sans", 1, 10)); // NOI18N
         txtArea.setRows(5);
         jScrollPane1.setViewportView(txtArea);
 
@@ -180,16 +337,19 @@ public class CapturaHuella extends javax.swing.JDialog {
 
         getContentPane().add(panBtns, java.awt.BorderLayout.SOUTH);
 
-        setSize(new java.awt.Dimension(412, 575));
+        setSize(new java.awt.Dimension(500, 575));
         setLocationRelativeTo(null);
-    }// </editor-fold>//GEN-END:initComponents
-
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        System.exit(0);
-}//GEN-LAST:event_btnSalirActionPerformed
-
+    }// </editor-fold>                        
+     
+    
+    
+    
+    
+   
     private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
-    String nombre = JOptionPane.showInputDialog("Nombre a verificar:");
+    
+        String nombre = JOptionPane.showInputDialog("Digite numero de Documento:");
+    verificarRespaldoHuella(nombre);
     verificarHuella(nombre);
     Reclutador.clear();
 }//GEN-LAST:event_btnVerificarActionPerformed
@@ -197,6 +357,7 @@ public class CapturaHuella extends javax.swing.JDialog {
     private void btnIdentificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIdentificarActionPerformed
     try {
     identificarHuella();
+    identificarRespaldoHuella();
     Reclutador.clear();
     } catch (IOException ex) {
     Logger.getLogger(CapturaHuella.class.getName()).log(Level.SEVERE, null, ex);
@@ -204,11 +365,15 @@ public class CapturaHuella extends javax.swing.JDialog {
 }//GEN-LAST:event_btnIdentificarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-    guardarHuella();
-    Reclutador.clear();
+    
+    
+    guardarHuella(); 
+     Reclutador.clear();
     lblImagenHuella.setIcon(null);
+    //btnRespaldo.setVisible(false);
+    btnGuardar.setVisible(false);
     start();
-    System.exit(0);
+    
 }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -218,12 +383,32 @@ public class CapturaHuella extends javax.swing.JDialog {
         btnGuardar.setEnabled(false);
         btnIdentificar.setEnabled(false);
         btnVerificar.setEnabled(false);
-        btnSalir.grabFocus();
+        btnRespaldo.setEnabled(false);
+        //btnSalir.grabFocus();
+       
+        
+        
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         stop();
     }//GEN-LAST:event_formWindowClosing
+
+    private void btnRespaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRespaldoActionPerformed
+        // TODO add your handling code here:
+    respaldoHuella(); 
+    Reclutador.clear();
+    lblImagenHuella.setIcon(null);
+    btnGuardar.setVisible(false);
+    btnRespaldo.setVisible(false);
+    start();
+        
+        
+        //CapturaHuella.btnGuardar.setVisible(false);
+        //CapturaHuella c = new CapturaHuella();
+        //c.show();
+        //lblImagenHuella.setIcon(null);
+    }//GEN-LAST:event_btnRespaldoActionPerformed
 
 //Varible que permite iniciar el dispositivo de lector de huella conectado
 // con sus distintos metodos.
@@ -254,7 +439,7 @@ protected void Iniciar(){
    Lector.addReaderStatusListener(new DPFPReaderStatusAdapter() {
     @Override public void readerConnected(final DPFPReaderStatusEvent e) {
     SwingUtilities.invokeLater(new Runnable() {	public void run() {
-    EnviarTexto("El Sensor de Huella Digital esta Activado o Conectado");
+    EnviarTexto("El Sensor de Huella Digital está Activado o Conectado");
     }});}
     @Override public void readerDisconnected(final DPFPReaderStatusEvent e) {
     SwingUtilities.invokeLater(new Runnable() {	public void run() {
@@ -295,7 +480,7 @@ protected void Iniciar(){
  // Comprobar la calidad de la muestra de la huella y lo añade a su reclutador si es bueno
  if (featuresinscripcion != null)
      try{
-     System.out.println("Las Caracteristicas de la Huella han sido creada");
+     System.out.println("Las Caracteristicas de la Huella han sido creadas");
      Reclutador.addFeatures(featuresinscripcion);// Agregar las caracteristicas de la huella a la plantilla a crear
 
      // Dibuja la huella dactilar capturada.
@@ -322,6 +507,8 @@ protected void Iniciar(){
             btnVerificar.setEnabled(false);
             btnGuardar.setEnabled(true);
             btnGuardar.grabFocus();
+            btnRespaldo.setEnabled(true);
+            btnRespaldo.grabFocus();
             break;
 
 	    case TEMPLATE_STATUS_FAILED: // informe de fallas y reiniciar la captura de huellas
@@ -348,13 +535,15 @@ protected void Iniciar(){
   public  Image CrearImagenHuella(DPFPSample sample) {
 	return DPFPGlobal.getSampleConversionFactory().createImage(sample);
 }
+ 
+  
 
   public void DibujarHuella(Image image) {
         lblImagenHuella.setIcon(new ImageIcon(
         image.getScaledInstance(lblImagenHuella.getWidth(), lblImagenHuella.getHeight(), Image.SCALE_DEFAULT)));
         repaint();
  }
-
+//cantidad de templatrs para guardar la huella
 public  void EstadoHuellas(){
 	EnviarTexto("Muestra de Huellas Necesarias para Guardar Template "+ Reclutador.getFeaturesNeeded());
 }
@@ -393,22 +582,20 @@ ConexionBD con=new ConexionBD();
      Integer tamañoHuella=template.serialize().length;
 
      //Pregunta el nombre de la persona a la cual corresponde dicha huella
-     String nombre = JOptionPane.showInputDialog("Nombre: ");
+     String nombre = JOptionPane.showInputDialog("Numero Documento: ");
      try {
      //Establece los valores para la sentencia SQL
      Connection c=con.conectar(); //establece la conexion con la BD
-     PreparedStatement guardarStmt = c.prepareStatement("INSERT INTO somhue(huenombre, huehuella) values(?,?)");
+     PreparedStatement guardarStmt = c.prepareStatement("UPDATE funcionarios set huella=? WHERE documentoFuncionario=?");
 
-     guardarStmt.setString(1,nombre);
-     guardarStmt.setBinaryStream(2, datosHuella,tamañoHuella);
-     
-     
+     guardarStmt.setBinaryStream(1, datosHuella,tamañoHuella);
+     guardarStmt.setString(2,nombre);    
      //Ejecuta la sentencia
      guardarStmt.execute();
      guardarStmt.close();
      JOptionPane.showMessageDialog(null,"Huella Guardada Correctamente");
      con.desconectar();
-     btnGuardar.setEnabled(false);
+     btnGuardar.setEnabled(true);
      btnVerificar.grabFocus();
      } catch (SQLException ex) {
      //Si ocurre un error lo indica en la consola
@@ -418,6 +605,40 @@ ConexionBD con=new ConexionBD();
      }
    }
 
+    
+     public void respaldoHuella(){
+     //Obtiene los datos del template de la huella actual
+     ByteArrayInputStream datosHuella = new ByteArrayInputStream(template.serialize());
+     Integer tamañoHuella=template.serialize().length;
+
+     //Pregunta el nombre de la persona a la cual corresponde dicha huella
+     String nombre = JOptionPane.showInputDialog("Numero Documento: ");
+     try {
+     //Establece los valores para la sentencia SQL
+     Connection c=con.conectar(); //establece la conexion con la BD
+     PreparedStatement guardarStmt = c.prepareStatement("UPDATE funcionarios set respalhuella=? WHERE documentoFuncionario=?");
+
+     guardarStmt.setBinaryStream(1, datosHuella,tamañoHuella);
+     guardarStmt.setString(2,nombre);    
+     //Ejecuta la sentencia
+     guardarStmt.execute();
+     guardarStmt.close();
+     JOptionPane.showMessageDialog(null,"Huella de respaldo Guardada Correctamente");
+     con.desconectar();
+     btnRespaldo.setEnabled(true);
+     btnVerificar.grabFocus();
+     } catch (SQLException ex) {
+     //Si ocurre un error lo indica en la consola
+     System.err.println("Error al guardar los datos de respaldo de la huella.");
+     }finally{
+     con.desconectar();
+     }
+   }
+
+    
+    
+    
+    
 /**
 * Verifica la huella digital actual contra otra en la base de datos
 */
@@ -426,14 +647,18 @@ ConexionBD con=new ConexionBD();
     //Establece los valores para la sentencia SQL
     Connection c=con.conectar();
     //Obtiene la plantilla correspondiente a la persona indicada
-    PreparedStatement verificarStmt = c.prepareStatement("SELECT huehuella FROM somhue WHERE huenombre=?");
+    PreparedStatement verificarStmt = c.prepareStatement("SELECT huella FROM funcionarios WHERE documentoFuncionario=?");
     verificarStmt.setString(1,nom);
+    
+    
     ResultSet rs = verificarStmt.executeQuery();
 
     //Si se encuentra el nombre en la base de datos
     if (rs.next()){
     //Lee la plantilla de la base de datos
-    byte templateBuffer[] = rs.getBytes("huehuella");
+    byte templateBuffer[] = rs.getBytes("huella");
+    
+    
     //Crea una nueva plantilla a partir de la guardada en la base de datos
     DPFPTemplate referenceTemplate = DPFPGlobal.getTemplateFactory().createTemplate(templateBuffer);
     //Envia la plantilla creada al objeto contendor de Template del componente de huella digital
@@ -447,15 +672,60 @@ ConexionBD con=new ConexionBD();
     if (result.isVerified())
     JOptionPane.showMessageDialog(null, "Las huella capturada coinciden con la de "+nom,"Verificacion de Huella", JOptionPane.INFORMATION_MESSAGE);
     else
-    JOptionPane.showMessageDialog(null, "No corresponde la huella con "+nom, "Verificacion de Huella", JOptionPane.ERROR_MESSAGE);
+    JOptionPane.showMessageDialog(null, "No corresponde la huella con "+nom,"Verificacion de Huella", JOptionPane.ERROR_MESSAGE);
 
     //Si no encuentra alguna huella correspondiente al nombre lo indica con un mensaje
     } else {
-    JOptionPane.showMessageDialog(null, "No existe un registro de huella para "+nom, "Verificacion de Huella", JOptionPane.ERROR_MESSAGE);
+    JOptionPane.showMessageDialog(null, "No existe un registro de huella para "+nom,"Verificacion de Huella", JOptionPane.ERROR_MESSAGE);
     }
     } catch (SQLException e) {
     //Si ocurre un error lo indica en la consola
     System.err.println("Error al verificar los datos de la huella.");
+    }finally{
+       con.desconectar();
+    }
+   }
+ 
+ 
+ public void verificarRespaldoHuella(String resp) {
+    try {
+    //Establece los valores para la sentencia SQL
+    Connection c=con.conectar();
+    //Obtiene la plantilla correspondiente a la persona indicada
+    PreparedStatement verificarStmt = c.prepareStatement("SELECT respalhuella FROM funcionarios WHERE documentoFuncionario=?");
+    
+    verificarStmt.setString(1,resp);
+    
+    ResultSet rs = verificarStmt.executeQuery();
+
+    //Si se encuentra el nombre en la base de datos
+    if (rs.next()){
+    //Lee la plantilla de la base de datos
+    byte templateBuffer[] = rs.getBytes("respalhuella");
+    
+    
+    //Crea una nueva plantilla a partir de la guardada en la base de datos
+    DPFPTemplate referenceTemplate = DPFPGlobal.getTemplateFactory().createTemplate(templateBuffer);
+    //Envia la plantilla creada al objeto contendor de Template del componente de huella digital
+    setTemplate(referenceTemplate);
+
+    // Compara las caracteriticas de la huella recientemente capturda con la
+    // plantilla guardada al usuario especifico en la base de datos
+    DPFPVerificationResult result = Verificador.verify(featuresverificacion, getTemplate());
+
+    //compara las plantilas (actual vs bd)
+    if (result.isVerified())
+    JOptionPane.showMessageDialog(null, "Las huella de respaldo capturada coinciden con la de"+resp,"Verificacion de Huella", JOptionPane.INFORMATION_MESSAGE);
+    else
+    JOptionPane.showMessageDialog(null, "No corresponde la huella de respaldo con "+resp,"Verificacion de Huella", JOptionPane.ERROR_MESSAGE);
+
+    //Si no encuentra alguna huella correspondiente al nombre lo indica con un mensaje
+    } else {
+    JOptionPane.showMessageDialog(null, "No existe un registro de huella de respaldo para "+resp,"Verificacion de Huella", JOptionPane.ERROR_MESSAGE);
+    }
+    } catch (SQLException e) {
+    //Si ocurre un error lo indica en la consola
+    System.err.println("Error al verificar los datos de la huella de respaldo.");
     }finally{
        con.desconectar();
     }
@@ -470,14 +740,15 @@ ConexionBD con=new ConexionBD();
        Connection c=con.conectar();
 
        //Obtiene todas las huellas de la bd
-       PreparedStatement identificarStmt = c.prepareStatement("SELECT huenombre,huehuella FROM somhue");
+       PreparedStatement identificarStmt = c.prepareStatement("SELECT login,huella FROM funcionarios");
        ResultSet rs = identificarStmt.executeQuery();
 
        //Si se encuentra el nombre en la base de datos
        while(rs.next()){
        //Lee la plantilla de la base de datos
-       byte templateBuffer[] = rs.getBytes("huehuella");
-       String nombre=rs.getString("huenombre");
+       byte templateBuffer[] = rs.getBytes("huella");
+        
+       String nombre=rs.getString("login");
        //Crea una nueva plantilla a partir de la guardada en la base de datos
        DPFPTemplate referenceTemplate = DPFPGlobal.getTemplateFactory().createTemplate(templateBuffer);
        //Envia la plantilla creada al objeto contendor de Template del componente de huella digital
@@ -492,26 +763,79 @@ ConexionBD con=new ConexionBD();
        //e indica el nombre de la persona que coincidió.
        if (result.isVerified()){
        //crea la imagen de los datos guardado de las huellas guardadas en la base de datos
-       JOptionPane.showMessageDialog(null, "Las huella capturada es de "+nombre,"Verificacion de Huella", JOptionPane.INFORMATION_MESSAGE);
+       JOptionPane.showMessageDialog(null, "Las huella capturada es de "+nombre," Verificacion de Huella ", JOptionPane.INFORMATION_MESSAGE);
        return;
                                }
        }
        //Si no encuentra alguna huella correspondiente al nombre lo indica con un mensaje
-       JOptionPane.showMessageDialog(null, "No existe ningún registro que coincida con la huella", "Verificacion de Huella", JOptionPane.ERROR_MESSAGE);
+       JOptionPane.showMessageDialog(null, "No existe ningún registro que coincida con la huella ", " Verificacion de Huella ", JOptionPane.ERROR_MESSAGE);
        setTemplate(null);
        } catch (SQLException e) {
        //Si ocurre un error lo indica en la consola
-       System.err.println("Error al identificar huella dactilar."+e.getMessage());
+       System.err.println("Error al identificar huella dactilar. "+e.getMessage());
        }finally{
        con.desconectar();
        }
    }
+  
+  
+  public void identificarRespaldoHuella() throws IOException{
+     try {
+       //Establece los valores para la sentencia SQL
+       Connection c=con.conectar();
 
+       //Obtiene todas las huellas de la bd
+       PreparedStatement identificarStmt = c.prepareStatement("SELECT login,respalhuella FROM funcionarios");
+       ResultSet rs = identificarStmt.executeQuery();
+
+       //Si se encuentra el nombre en la base de datos
+       while(rs.next()){
+       //Lee la plantilla de la base de datos
+       byte templateBuffer[] = rs.getBytes("respalhuella");
+        
+       String nombre=rs.getString("login");
+       //Crea una nueva plantilla a partir de la guardada en la base de datos
+       DPFPTemplate referenceTemplate = DPFPGlobal.getTemplateFactory().createTemplate(templateBuffer);
+       //Envia la plantilla creada al objeto contendor de Template del componente de huella digital
+       setTemplate(referenceTemplate);
+
+       // Compara las caracteriticas de la huella recientemente capturda con la
+       // alguna plantilla guardada en la base de datos que coincide con ese tipo
+       DPFPVerificationResult result = Verificador.verify(featuresverificacion, getTemplate());
+
+       //compara las plantilas (actual vs bd)
+       //Si encuentra correspondencia dibuja el mapa
+       //e indica el nombre de la persona que coincidió.
+       if (result.isVerified()){
+       //crea la imagen de los datos guardado de las huellas guardadas en la base de datos
+       JOptionPane.showMessageDialog(null, "Las huella de respaldo capturada es de "+nombre," Verificacion de Huella ", JOptionPane.INFORMATION_MESSAGE);
+       return;
+                               }
+       }
+       //Si no encuentra alguna huella correspondiente al nombre lo indica con un mensaje
+       JOptionPane.showMessageDialog(null, "No existe ningún registro que coincida con la huella de respaldo ", " Verificacion de Huella ", JOptionPane.ERROR_MESSAGE);
+       setTemplate(null);
+       } catch (SQLException e) {
+       //Si ocurre un error lo indica en la consola
+       System.err.println("Error al identificar huella de respaldo. "+e.getMessage());
+       }finally{
+       con.desconectar();
+       }
+   }
+  
+  
+  
+
+ /**
+  * Identifica a una persona registrada por medio de su huella digital
+  */
+  
 /*
 * @param args the command line arguments
 */
 
 public static void main(String args[]) {
+    //Look and feel setting code (optional)
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new CapturaHuella().setVisible(true);
@@ -520,9 +844,9 @@ public static void main(String args[]) {
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGuardar;
+    public static javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnIdentificar;
-    private javax.swing.JButton btnSalir;
+    public static javax.swing.JButton btnRespaldo;
     private javax.swing.JButton btnVerificar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -530,7 +854,6 @@ public static void main(String args[]) {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblImagenHuella;
     private javax.swing.JPanel panBtns;
-    private javax.swing.JPanel panHuellas;
     private javax.swing.JTextArea txtArea;
     // End of variables declaration//GEN-END:variables
 
