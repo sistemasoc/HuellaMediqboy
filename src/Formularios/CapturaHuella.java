@@ -520,7 +520,7 @@ protected void Iniciar(){
 	    start();
 	    break;
 	}
-	     }
+	    }
 }
 
  public  DPFPFeatureSet extraerCaracteristicas(DPFPSample sample, DPFPDataPurpose purpose){
@@ -708,8 +708,7 @@ ConexionBD con=new ConexionBD();
     DPFPTemplate referenceTemplate = DPFPGlobal.getTemplateFactory().createTemplate(templateBuffer);
     //Envia la plantilla creada al objeto contendor de Template del componente de huella digital
     setTemplate(referenceTemplate);
-
-    // Compara las caracteriticas de la huella recientemente capturda con la
+   // Compara las caracteriticas de la huella recientemente capturda con la
     // plantilla guardada al usuario especifico en la base de datos
     DPFPVerificationResult result = Verificador.verify(featuresverificacion, getTemplate());
 
